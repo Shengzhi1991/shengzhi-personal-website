@@ -1,0 +1,20 @@
+{
+  "name": "shengzhi-personal-website",
+  "version": "1.0.0",
+  "description": "晟治弗利的个人网站 - AI实战培训讲师与自媒体博主",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && node server.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": ["react", "nodejs", "personal-website", "ai", "training", "media"],
+  "author": "晟治弗利",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+} 

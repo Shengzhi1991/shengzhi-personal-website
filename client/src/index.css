@@ -1,0 +1,535 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS变量 */
+:root {
+  --primary-color: #E31937;
+  --primary-light: rgba(227, 25, 55, 0.1);
+  --primary-medium: rgba(227, 25, 55, 0.3);
+  --primary-dark: #c41530;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666;
+  --text-light: #999;
+  --background: #ffffff;
+  --surface: #f8f9fa;
+  --border: #e9ecef;
+  --border-light: #d2d2d7;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+}
+
+/* 基础样式 */
+body {
+  font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 超大字体样式 */
+.hero-title {
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.mega-number {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--primary-color);
+  font-family: 'Inter', sans-serif;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* 标题样式 */
+.title-zh {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.title-en {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.card-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+/* 容器 */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* 导航栏 */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.logo {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* 英雄区域 */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px;
+  background: var(--bg-primary);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, var(--primary-light) 100%);
+  z-index: 1;
+}
+
+/* 统计数据 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--surface);
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Bento Grid 布局 */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.bento-card {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.bento-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.bento-card.large {
+  grid-column: span 2;
+}
+
+.bento-card.tall {
+  grid-row: span 2;
+}
+
+.bento-card.featured {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+}
+
+.bento-card.featured .card-title {
+  color: white;
+}
+
+/* 按钮样式 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(227, 25, 55, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* 社交媒体链接 */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* 文章卡片 */
+.article-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.article-category {
+  background: var(--primary-light);
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* 图标样式 */
+.icon-large {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+/* 加载动画 */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-light);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .nav-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .show-mobile {
+    display: block !important;
+  }
+  
+  .mobile-menu-btn {
+    background: none !important;
+    border: none !important;
+    font-size: 1.2rem !important;
+    color: var(--text-primary) !important;
+    cursor: pointer !important;
+    padding: 0.5rem !important;
+  }
+  
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-light);
+    padding: 1rem 0;
+    z-index: 999;
+  }
+  
+  .mobile-menu-link {
+    display: block;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: background 0.3s ease;
+  }
+  
+  .mobile-menu-link:hover {
+    background: var(--primary-light);
+    color: var(--primary-color);
+  }
+  
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .bento-card.large,
+  .bento-card.tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .hero {
+    min-height: 80vh;
+    text-align: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .mega-number {
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-mobile {
+    display: flex !important;
+  }
+  
+  .show-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .mega-number {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* 滚动动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* 悬浮动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+} 

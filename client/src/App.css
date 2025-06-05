@@ -1,0 +1,136 @@
+.App {
+  min-height: 100vh;
+  position: relative;
+  text-align: left;
+}
+
+/* 加载页面样式 */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #E31937;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 页面过渡动画 */
+.page-transition {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 全局容器样式 */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-large {
+  padding: 6rem 0;
+}
+
+/* 文本样式 */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-highlight {
+  color: var(--primary-red);
+  font-weight: 600;
+}
+
+/* 响应式隐藏类 */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .section {
+    padding: 2rem 0;
+  }
+  
+  .section-large {
+    padding: 3rem 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .hidden-desktop {
+    display: none !important;
+  }
+}
+
+/* 全局动画 */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 响应式工具类 */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+/* 焦点样式 */
+*:focus {
+  outline: 2px solid #E31937;
+  outline-offset: 2px;
+}
+
+/* 选择文本样式 */
+::selection {
+  background: rgba(227, 25, 55, 0.2);
+  color: #1a1a1a;
+} 
