@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // 数据库初始化
-const db = new sqlite3.Database('website.db', (err) => {
+const db = new sqlite3.Database(':memory:', (err) => {
   if (err) {
     console.error('数据库连接失败:', err.message);
   } else {
@@ -27,40 +27,59 @@ const db = new sqlite3.Database('website.db', (err) => {
 });
 
 // 初始化数据库表
-function initDatabase() {
-  // 创建文章表
-  db.run(`
-    CREATE TABLE IF NOT EXISTS articles (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      content TEXT NOT NULL,
-      summary TEXT,
-      category TEXT DEFAULT 'AI洞察',
-      tags TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-  `);
+async function initDatabase() {
+  return new Promise((resolve, reject) => {
+    // 创建文章表
+    db.run(`
+      CREATE TABLE IF NOT EXISTS articles (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT NOT NULL,
+        content TEXT NOT NULL,
+        summary TEXT,
+        category TEXT DEFAULT 'AI洞察',
+        tags TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      )
+    `, (err) => {
+      if (err) {
+        console.error('创建articles表失败:', err);
+        reject(err);
+        return;
+      }
+      console.log('articles表创建成功');
 
-  // 创建产品表
-  db.run(`
-    CREATE TABLE IF NOT EXISTS products (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      description TEXT NOT NULL,
-      url TEXT NOT NULL,
-      category TEXT,
-      features TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-  `);
-
-  // 插入初始数据
-  insertInitialData();
+      // 创建产品表
+      db.run(`
+        CREATE TABLE IF NOT EXISTS products (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name TEXT NOT NULL,
+          description TEXT NOT NULL,
+          url TEXT NOT NULL,
+          category TEXT,
+          features TEXT,
+          created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+      `, (err) => {
+        if (err) {
+          console.error('创建products表失败:', err);
+          reject(err);
+          return;
+        }
+        console.log('products表创建成功');
+        
+        // 插入初始数据
+        insertInitialData();
+        resolve();
+      });
+    });
+  });
 }
 
 // 插入初始数据
 function insertInitialData() {
+  console.log('开始插入初始数据...');
+  
   // 插入产品数据
   const products = [
     {
@@ -100,10 +119,22 @@ function insertInitialData() {
     }
   ];
 
-  products.forEach(product => {
+  let productsInserted = 0;
+  products.forEach((product, index) => {
     db.run(
-      'INSERT OR IGNORE INTO products (name, description, url, category, features) VALUES (?, ?, ?, ?, ?)',
-      [product.name, product.description, product.url, product.category, product.features]
+      'INSERT INTO products (name, description, url, category, features) VALUES (?, ?, ?, ?, ?)',
+      [product.name, product.description, product.url, product.category, product.features],
+      function(err) {
+        if (err) {
+          console.error('插入产品数据失败:', err);
+        } else {
+          productsInserted++;
+          console.log(`产品数据插入成功: ${product.name}`);
+          if (productsInserted === products.length) {
+            console.log('所有产品数据插入完成');
+          }
+        }
+      }
     );
   });
 
