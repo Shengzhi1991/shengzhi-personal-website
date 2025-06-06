@@ -59,9 +59,9 @@ const Navbar = () => {
             </a>
           </div>
 
-          <button 
+        <button 
             className="mobile-menu-btn show-mobile"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="切换菜单"
             style={{
               background: 'none',
@@ -70,12 +70,12 @@ const Navbar = () => {
               color: 'var(--text-primary)',
               cursor: 'pointer'
             }}
-          >
+        >
             <i className="fas fa-bars"></i>
-          </button>
-        </div>
+        </button>
+      </div>
 
-        {isMobileMenuOpen && (
+      {isMobileMenuOpen && (
           <div className="mobile-menu" style={{
             position: 'absolute',
             top: '100%',
@@ -134,8 +134,8 @@ const Navbar = () => {
             }}>
               联系方式
             </a>
-          </div>
-        )}
+        </div>
+      )}
       </div>
     </nav>
   );

@@ -53,11 +53,9 @@ function App() {
           setArticles(data);
         } else {
           // API响应失败，使用默认数据
-          console.log('API响应失败，使用默认文章数据');
           setArticles(defaultArticles);
         }
       } catch (error) {
-        console.log('API连接失败，使用默认文章数据:', error.message);
         // API连接失败，使用默认数据
         setArticles(defaultArticles);
       } finally {
@@ -67,7 +65,6 @@ function App() {
 
     // 设置超时，避免长时间等待
     const timeoutId = setTimeout(() => {
-      console.log('API请求超时，使用默认文章数据');
       setArticles(defaultArticles);
       setIsLoading(false);
     }, 5000); // 5秒超时
@@ -76,7 +73,7 @@ function App() {
 
     // 初始化 Framer Motion
     if (window.Motion) {
-      console.log('Framer Motion loaded successfully');
+      // Framer Motion loaded successfully
     }
 
     // 清理超时

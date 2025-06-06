@@ -493,13 +493,13 @@ html {
 /* 滚动动画 */
 @keyframes fadeInUp {
   from {
-    opacity: 0;
+  opacity: 0;
     transform: translateY(50px);
-  }
+}
   to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
+  transform: translateY(0);
+}
 }
 
 .fade-in-up {
