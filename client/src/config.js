@@ -5,9 +5,9 @@ const config = {
     API_BASE_URL: 'http://localhost:5000'
   },
   
-  // 生产环境 - 部署后需要更新这个地址
+  // 生产环境 - 使用Render部署的实际地址
   production: {
-    API_BASE_URL: 'https://your-backend-url.railway.app'
+    API_BASE_URL: 'https://shengzhi-personal-website.onrender.com'
   }
 };
 

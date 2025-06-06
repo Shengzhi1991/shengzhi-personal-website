@@ -96,7 +96,7 @@ fetch('/api/articles')
 
 更新为：
 ```javascript
-fetch('https://your-backend-url.railway.app/api/articles')
+fetch('https://shengzhi-personal-website.onrender.com/api/articles')
 ```
 
 ### 2. 设置 CORS
